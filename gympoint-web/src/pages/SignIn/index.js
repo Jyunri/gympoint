@@ -1,8 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Form, Input } from '@rocketseat/unform';
 import logo from '~/assets/images/logo.svg';
 
 import { Container, Content } from './styles';
+
+function handleSubmit(data) {
+  console.tron.log(data);
+}
 
 export default function SignIn() {
   return (
@@ -10,14 +14,17 @@ export default function SignIn() {
       <Content>
         <img src={logo} alt="GoBarber" />
 
-        <form>
-          <input type="email" placeholder="exemplo@email.com" />
+        <Form onSubmit={handleSubmit}>
+          <Input name="email" type="email" placeholder="exemplo@email.com" />
 
-          <input type="password" placeholder="Sua senha secreta" />
+          <Input
+            name="password"
+            type="password"
+            placeholder="Sua senha secreta"
+          />
 
           <button type="submit">Entrar no sistema</button>
-          <Link to="/register">Criar conta gratuita</Link>
-        </form>
+        </Form>
       </Content>
     </Container>
   );
