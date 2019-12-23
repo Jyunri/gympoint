@@ -52,9 +52,10 @@ export const Profile = styled.div`
       color: #333;
     }
 
-    a {
+    button {
       display: block;
-      margin-top: 2px;
+      margin-top: 4px;
+      border: 0;
       font-size: 12px;
       color: ${coralRed};
     }
