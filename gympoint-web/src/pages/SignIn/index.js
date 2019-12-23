@@ -1,14 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import logo from '~/assets/images/logo.svg';
 
 import { Container, Content } from './styles';
-
-function handleSubmit(data) {
-  console.tron.log(data);
-}
+import { signInRequest } from '~/store/modules/auth/actions';
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
+  function handleSubmit({ email, password }) {
+    dispatch(signInRequest(email, password));
+  }
+
   return (
     <Container>
       <Content>
