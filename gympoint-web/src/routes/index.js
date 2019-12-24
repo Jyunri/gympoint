@@ -7,12 +7,14 @@ import Students from '~/pages/Students';
 import Plans from '~/pages/Plans';
 import Enrollments from '~/pages/Enrollments';
 import Tickets from '~/pages/Tickets';
+import RegisterStudent from '~/pages/RegisterStudent';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/students" component={Students} isPrivate />
+      <Route path="/register" component={RegisterStudent} isPrivate />
       <Route path="/plans" component={Plans} isPrivate />
       <Route path="/enrollments" component={Enrollments} isPrivate />
       <Route path="/tickets" component={Tickets} isPrivate />

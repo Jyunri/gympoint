@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import { Link } from 'react-router-dom';
 import { lightBlack, coralRed } from '~/styles/colors';
@@ -39,6 +39,10 @@ export const Container = styled.div`
       height: 36px;
       width: 240px;
       text-align: center;
+
+      &::placeholder {
+        color: #ddd;
+      }
     }
   }
 
@@ -49,21 +53,23 @@ export const Container = styled.div`
   }
 `;
 
-export const Student = styled.li`
+export const Row = styled.li`
   padding: 20px;
   background: #fff;
   display: flex;
   justify-content: space-between;
 
-  span {
-    display: block;
-    margin-top: 3px;
-    color: ${props => (props.available ? '#999' : '#666')};
-  }
-
   & + li {
     border-top: 1px solid #eee;
   }
+`;
+
+export const Cell = styled.div`
+  ${props =>
+    props.size &&
+    css`
+      flex-basis: ${props.size}%;
+    `}
 `;
 
 export const Edit = styled(Link)`

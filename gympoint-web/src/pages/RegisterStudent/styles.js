@@ -1,0 +1,87 @@
+import styled from 'styled-components';
+import { darken } from 'polished';
+import { lightBlack, coralRed } from '~/styles/colors';
+
+export const Container = styled.div`
+  margin: 30px 120px;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    align-items: center;
+
+    strong {
+      color: ${lightBlack};
+      font-size: 24px;
+      margin-right: 15px;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 30px;
+    background: #fff;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    input {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      height: 44px;
+      padding: 0 15px;
+      color: #000;
+      margin: 0 0 10px;
+
+      &::placeholder {
+        color: #ddd;
+      }
+    }
+  }
+`;
+
+export const ConfirmButton = styled.button`
+  height: 36px;
+  width: 140px;
+  margin: 0px 10px;
+
+  border: 0;
+  border-radius: 4px;
+  background: ${coralRed};
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${darken(0.08, coralRed)};
+  }
+`;
+
+export const CancelButton = styled.button`
+  height: 36px;
+  width: 140px;
+  margin: 0px 10px;
+
+  border: 0;
+  border-radius: 4px;
+  background: #ccc;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.2s;
+
+  &:hover {
+    background: ${darken(0.08, '#ccc')};
+  }
+`;
+
+// export const UnForm = styled(Form)`
+//   background: #fff;
+//   margin-top: 30px;
+//   border-radius: 4px;
+// `;

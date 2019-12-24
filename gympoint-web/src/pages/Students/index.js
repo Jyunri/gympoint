@@ -1,11 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Container, Student, Edit, Delete } from './styles';
+import { Container, Row, Edit, Delete, Cell } from './styles';
 import history from '~/services/history';
+import api from '~/services/api';
 
 export default function Students() {
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    async function loadStudents() {
+      const response = await api.get('students');
+      setStudents(response.data);
+    }
+    loadStudents();
+  }, []);
+
   function handleRegister() {
     history.push('/register');
+  }
+
+  function renderStudent(student) {
+    return (
+      <Row key={student.id}>
+        <Cell size={30}>
+          <span>{student.name}</span>
+        </Cell>
+        <Cell size={30}>
+          <span>{student.email}</span>
+        </Cell>
+        <Cell size={10}>
+          <span>{student.age}</span>
+        </Cell>
+        <Cell size={15}>
+          <Edit to="/edit" student={student}>
+            editar
+          </Edit>
+        </Cell>
+        <Cell size={15}>
+          <Delete to="/delete" student={student}>
+            apagar
+          </Delete>
+        </Cell>
+      </Row>
+    );
   }
 
   return (
@@ -21,20 +58,21 @@ export default function Students() {
       </header>
 
       <ul>
-        <Student>
-          <span>Diego Fernandes</span>
-          <span>diogo@rocketseat.com</span>
-          <span>19</span>
-          <Edit to="/edit">editar</Edit>
-          <Delete to="/delete">apagar</Delete>
-        </Student>
-        <Student>
-          <span>Diego Fernandes</span>
-          <span>diogo@rocketseat.com</span>
-          <span>19</span>
-          <Edit to="/edit">editar</Edit>
-          <Delete to="/delete">apagar</Delete>
-        </Student>
+        <Row>
+          <Cell size={30}>
+            <strong>NOME</strong>
+          </Cell>
+          <Cell size={30}>
+            <strong>EMAIL</strong>
+          </Cell>
+          <Cell size={10}>
+            <strong>IDADE</strong>
+          </Cell>
+          <Cell size={30}>
+            <span />
+          </Cell>
+        </Row>
+        {students.map(student => renderStudent(student))}
       </ul>
     </Container>
   );
