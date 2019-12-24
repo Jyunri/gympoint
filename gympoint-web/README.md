@@ -6,3 +6,5 @@
 [] Adicionar proptypes
 [] Adicionar imagem de avatar
 [] Colorir o link do Header de acordo com a pagina atual
+[] Fazer o header das listas
+[] Ajustar o estilo das listas

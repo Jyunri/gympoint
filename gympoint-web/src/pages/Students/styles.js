@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
+import { Link } from 'react-router-dom';
 import { lightBlack, coralRed } from '~/styles/colors';
 
 export const Container = styled.div`
@@ -43,30 +44,32 @@ export const Container = styled.div`
 
   ul {
     background: #fff;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 15px;
     margin-top: 30px;
+    border-radius: 4px;
   }
 `;
 
 export const Student = styled.li`
   padding: 20px;
-  border-radius: 4px;
   background: #fff;
-
-  opacity: ${props => (props.past ? 0.6 : 1)};
-
-  strong {
-    display: block;
-    color: ${props => (props.available ? '#999' : '#7159c1')};
-    font-size: 20px;
-    font-weight: normal;
-  }
+  display: flex;
+  justify-content: space-between;
 
   span {
     display: block;
     margin-top: 3px;
     color: ${props => (props.available ? '#999' : '#666')};
   }
+
+  & + li {
+    border-top: 1px solid #eee;
+  }
+`;
+
+export const Edit = styled(Link)`
+  color: '#4D85EE';
+`;
+
+export const Delete = styled(Link)`
+  color: ${coralRed};
 `;

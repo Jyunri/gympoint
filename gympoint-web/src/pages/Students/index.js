@@ -1,15 +1,21 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-import { Container, Student } from './styles';
+import { Container, Student, Edit, Delete } from './styles';
+import history from '~/services/history';
 
 export default function Students() {
+  function handleRegister() {
+    history.push('/register');
+  }
+
   return (
     <Container>
       <header>
         <strong>Gerenciando alunos</strong>
         <div>
-          <button type="button">Cadastrar</button>
+          <button type="button" onClick={handleRegister}>
+            Cadastrar
+          </button>
           <input placeholder="Buscar aluno" />
         </div>
       </header>
@@ -19,8 +25,15 @@ export default function Students() {
           <span>Diego Fernandes</span>
           <span>diogo@rocketseat.com</span>
           <span>19</span>
-          <Link to="/edit">editar</Link>
-          <Link to="/delete">apagar</Link>
+          <Edit to="/edit">editar</Edit>
+          <Delete to="/delete">apagar</Delete>
+        </Student>
+        <Student>
+          <span>Diego Fernandes</span>
+          <span>diogo@rocketseat.com</span>
+          <span>19</span>
+          <Edit to="/edit">editar</Edit>
+          <Delete to="/delete">apagar</Delete>
         </Student>
       </ul>
     </Container>
