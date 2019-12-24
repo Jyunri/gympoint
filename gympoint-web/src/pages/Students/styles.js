@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
-import { Link } from 'react-router-dom';
 import { lightBlack, coralRed } from '~/styles/colors';
 
 export const Container = styled.div`
@@ -62,6 +61,15 @@ export const Row = styled.li`
   & + li {
     border-top: 1px solid #eee;
   }
+
+  a {
+    color: '#4D85EE';
+  }
+
+  button {
+    border: none;
+    color: ${coralRed};
+  }
 `;
 
 export const Cell = styled.div`
@@ -70,12 +78,4 @@ export const Cell = styled.div`
     css`
       flex-basis: ${props.size}%;
     `}
-`;
-
-export const Edit = styled(Link)`
-  color: '#4D85EE';
-`;
-
-export const Delete = styled(Link)`
-  color: ${coralRed};
 `;

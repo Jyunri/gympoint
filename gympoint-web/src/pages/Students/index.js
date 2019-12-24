@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Row, Edit, Delete, Cell } from './styles';
+import { Link } from 'react-router-dom';
+import { Container, Row, Cell } from './styles';
 import history from '~/services/history';
 import api from '~/services/api';
 
@@ -19,6 +20,15 @@ export default function Students() {
     history.push('/register');
   }
 
+  function handleDelete(student) {
+    const confirmMessage = `Deseja realmente excluir o registro ${student.email}?`;
+
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm(confirmMessage)) {
+      console.log(1);
+    }
+  }
+
   function renderStudent(student) {
     return (
       <Row key={student.id}>
@@ -32,14 +42,18 @@ export default function Students() {
           <span>{student.age}</span>
         </Cell>
         <Cell size={15}>
-          <Edit to="/edit" student={student}>
+          <Link to="/edit" student={student}>
             editar
-          </Edit>
+          </Link>
         </Cell>
         <Cell size={15}>
-          <Delete to="/delete" student={student}>
+          <button
+            type="button"
+            onClick={() => handleDelete(student)}
+            student={student}
+          >
             apagar
-          </Delete>
+          </button>
         </Cell>
       </Row>
     );
