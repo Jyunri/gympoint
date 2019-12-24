@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { coralRed } from '~/styles/colors';
+import { coralRed, lightBlack } from '~/styles/colors';
 
 export const Container = styled.div`
   background: #fff;
@@ -49,7 +49,7 @@ export const Profile = styled.div`
 
     strong {
       display: block;
-      color: #333;
+      color: ${lightBlack};
     }
 
     button {
