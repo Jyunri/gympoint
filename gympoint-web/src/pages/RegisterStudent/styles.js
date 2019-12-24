@@ -25,22 +25,37 @@ export const Container = styled.div`
     padding: 30px;
     background: #fff;
 
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+
+      strong {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+
+      input {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        height: 44px;
+        padding: 15px;
+        color: #000;
+        margin: 0 0 10px;
+
+        &::placeholder {
+          color: #ddd;
+        }
+      }
+    }
+
     div {
       display: flex;
       justify-content: space-between;
-    }
 
-    input {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      height: 44px;
-      padding: 0 15px;
-      color: #000;
-      margin: 0 0 10px;
-
-      &::placeholder {
-        color: #ddd;
+      > label {
+        flex-basis: 30%;
       }
     }
   }

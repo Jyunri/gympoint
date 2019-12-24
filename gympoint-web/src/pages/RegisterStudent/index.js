@@ -18,12 +18,31 @@ export default function RegisterStudent() {
         </div>
       </header>
       <Form>
-        <Input name="name" placeholder="John Doe" />
-        <Input name="email" placeholder="exemplo@email.com" />
+        <label htmlFor="name">
+          <strong>NOME COMPLETO</strong>
+          <Input name="name" placeholder="John Doe" />
+        </label>
+
+        <label htmlFor="email">
+          <strong>ENDEREÇO DE EMAIL</strong>
+          <Input name="email" placeholder="exemplo@email.com" />
+        </label>
+
         <div>
-          <Input name="age" />
-          <Input name="weight" />
-          <Input name="height" />
+          <label htmlFor="age">
+            <strong>IDADE</strong>
+            <Input name="age" />
+          </label>
+
+          <label htmlFor="weight">
+            <strong>PESO (em kg)</strong>
+            <Input name="weight" />
+          </label>
+
+          <label htmlFor="height">
+            <strong>ALTURA</strong>
+            <Input name="height" />
+          </label>
         </div>
       </Form>
     </Container>

@@ -10,3 +10,4 @@
 [] Ajustar o estilo das listas
 [] Verificar pq a cor do voltar nao esta cinza usando props no styled-component
 [] Ajustar o grid para ficar responsivo
+[] Extrair o Row e o Cell para uma componente
