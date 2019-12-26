@@ -1,10 +1,22 @@
 ### TODO
 
+## Geral
+
+[] Não realize formatações de valores dentro do return () nos componentes React, opte por formatar os dados assim que recebidos da API
+
+
+## Cadastro de matricula
+[] Buscar dinamicamente os alunos e os planos (react select)
+
+
+
 [] Arrumar o header dinamico para paginas filhas
+[X] Colocar formatacao nos valores de data
 [X] Colocar formatacao nos valores por mes
 [X] Colocar sufixo nas duracoes de planos
 [] Lidar com o preco total dos planos
-[] Adicionar labels no login
+[X] Adicionar labels no login
+  - Entender o que sao os warning
 [] Adicionar validacoes no login
 [] Adicionar proptypes
 [] Adicionar imagem de avatar
@@ -24,6 +36,11 @@
 [] Extrair layout de form de aluno
 [] Validacoes de props
 [] Extrair estilizacao das listas
+[] Fazer uma seed para varios testes
+
+[] Adicione paginação no front-end e back-end para todas listagens;
+[] Utilize máscaras para inputs numéricos de valores, peso e altura;
+
 
 ## Duvidas
 1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux
