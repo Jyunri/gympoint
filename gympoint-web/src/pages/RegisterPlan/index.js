@@ -17,7 +17,7 @@ export default function RegisterPlan() {
       <header>
         <strong>Cadastro de plano</strong>
         <div>
-          <CancelButton type="button" onClick={() => history.push('/')}>
+          <CancelButton type="button" onClick={() => history.push('/plans')}>
             Voltar
           </CancelButton>
           <ConfirmButton type="submit" form="form">

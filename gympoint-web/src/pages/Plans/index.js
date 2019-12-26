@@ -24,12 +24,13 @@ export default function Plans() {
   }
 
   async function handleDelete(plan) {
-    // const confirmMessage = `Deseja realmente excluir o registro ${student.email}?`;
-    // eslint-disable-next-line no-restricted-globals
-    // if (confirm(confirmMessage)) {
-    //   await api.delete(`students/${student.id}`);
-    //   loadStudents();
-    // }
+    const confirmMessage = `Deseja realmente excluir o registro ${plan.title}?`;
+
+    //eslint-disable-next-line no-restricted-globals
+    if (confirm(confirmMessage)) {
+      await api.delete(`plans/${plan.id}`);
+      loadPlans();
+    }
   }
 
   function renderPlan(plan) {
