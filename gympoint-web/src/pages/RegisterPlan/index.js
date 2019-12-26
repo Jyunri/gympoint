@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { Container, ConfirmButton, CancelButton } from './styles';
 import history from '~/services/history';
-import { registerStudentRequest } from '~/store/modules/students/actions';
+import { registerPlanRequest } from '~/store/modules/plans/actions';
 
 export default function RegisterPlan() {
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
-    // dispatch(registerStudentRequest(data));
+    dispatch(registerPlanRequest(data));
   }
 
   return (
@@ -17,7 +17,7 @@ export default function RegisterPlan() {
       <header>
         <strong>Cadastro de plano</strong>
         <div>
-          <CancelButton type="button" onClick={() => history.push('/students')}>
+          <CancelButton type="button" onClick={() => history.push('/')}>
             Voltar
           </CancelButton>
           <ConfirmButton type="submit" form="form">
@@ -39,7 +39,7 @@ export default function RegisterPlan() {
 
           <label htmlFor="price">
             <strong>PREÇO MENSAL</strong>
-            <Input name="weight" />
+            <Input name="price" />
           </label>
 
           <label htmlFor="totalPrice">
