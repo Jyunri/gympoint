@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { coralRed, lightBlack, lightGrey } from '~/styles/colors';
+import { coralRed, lightBlack } from '~/styles/colors';
 
 export const Container = styled.div`
   background: #fff;
