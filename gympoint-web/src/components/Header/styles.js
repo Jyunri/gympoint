@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { coralRed, lightBlack } from '~/styles/colors';
+import { coralRed, lightBlack, fadedGrey } from '~/styles/colors';
 
 export const Container = styled.div`
   background: #fff;
@@ -35,7 +35,7 @@ export const Content = styled.div`
 export const NavLink = styled(Link)`
   margin-right: 20px;
   font-weight: bold;
-  color: ${props => (props.current === 'true' ? '#333' : '#999')};
+  color: ${props => (props.current === 'true' ? '#333' : fadedGrey)};
 `;
 
 export const Profile = styled.div`

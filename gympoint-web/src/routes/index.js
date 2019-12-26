@@ -8,16 +8,26 @@ import Plans from '~/pages/Plans';
 import Enrollments from '~/pages/Enrollments';
 import Tickets from '~/pages/Tickets';
 import RegisterStudent from '~/pages/RegisterStudent';
+import RegisterPlan from '~/pages/RegisterPlan';
 import EditStudent from '~/pages/EditStudent';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
-      <Route path="/students" component={Students} isPrivate />
-      <Route path="/register" component={RegisterStudent} isPrivate />
-      <Route path="/edit" component={EditStudent} isPrivate />
-      <Route path="/plans" component={Plans} isPrivate />
+
+      <Route path="/students" exact component={Students} isPrivate />
+      <Route
+        path="/students/register"
+        exact
+        component={RegisterStudent}
+        isPrivate
+      />
+      <Route path="/students/:id/edit" component={EditStudent} isPrivate />
+
+      <Route path="/plans" exact component={Plans} isPrivate />
+      <Route path="/plans/register" exact component={RegisterPlan} isPrivate />
+
       <Route path="/enrollments" component={Enrollments} isPrivate />
       <Route path="/tickets" component={Tickets} isPrivate />
     </Switch>

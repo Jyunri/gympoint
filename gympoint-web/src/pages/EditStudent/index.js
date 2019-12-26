@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
+import { useParams } from 'react-router-dom';
 import { Container, ConfirmButton, CancelButton } from './styles';
 import history from '~/services/history';
 import { updateStudentRequest } from '~/store/modules/students/actions';
 import api from '~/services/api';
 
-export default function EditStudent({ location }) {
+export default function EditStudent() {
   const dispatch = useDispatch();
 
   // let access route from everywhere retrieving user data
-  const currentPath = location.pathname;
-  const id = currentPath.split('/').slice(-1)[0];
+  const { id } = useParams();
 
   const [student, setStudent] = useState({});
 

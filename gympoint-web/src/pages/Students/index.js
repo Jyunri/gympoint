@@ -18,7 +18,7 @@ export default function Students() {
   }, []);
 
   function handleRegister() {
-    history.push('/register');
+    history.push('/students/register');
   }
 
   async function handleDelete(student) {
@@ -45,7 +45,9 @@ export default function Students() {
         </Cell>
         <Cell size={15}>
           {/* workaround to pass props through Link */}
-          <Link to={{ pathname: `/edit/${student.id}`, state: { student } }}>
+          <Link
+            to={{ pathname: `students/${student.id}/edit`, state: { student } }}
+          >
             editar
           </Link>
         </Cell>

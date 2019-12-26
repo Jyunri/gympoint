@@ -1,5 +1,8 @@
 ### TODO
 
+[] Arrumar o header dinamico para paginas filhas
+[X] Colocar formatacao nos valores por mes
+[X] Colocar sufixo nas duracoes de planos
 [] Adicionar labels no login
 [] Adicionar validacoes no login
 [] Extrair cores
@@ -17,6 +20,7 @@
 ## Nice to haves
 [] Extrair layout de form de aluno
 [] Validacoes de props
+[] Extrair estilizacao das listas
 
 ## Duvidas
 1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux

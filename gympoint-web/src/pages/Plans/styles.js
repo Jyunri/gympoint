@@ -33,16 +33,6 @@ export const Container = styled.div`
         background: ${darken(0.08, coralRed)};
       }
     }
-
-    input {
-      height: 36px;
-      width: 240px;
-      text-align: center;
-
-      &::placeholder {
-        color: #ddd;
-      }
-    }
   }
 
   ul {
