@@ -26,7 +26,7 @@ export default function Plans() {
   async function handleDelete(plan) {
     const confirmMessage = `Deseja realmente excluir o registro ${plan.title}?`;
 
-    //eslint-disable-next-line no-restricted-globals
+    // eslint-disable-next-line no-restricted-globals
     if (confirm(confirmMessage)) {
       await api.delete(`plans/${plan.id}`);
       loadPlans();
@@ -47,7 +47,7 @@ export default function Plans() {
         </Cell>
         <Cell size={20}>
           {/* workaround to pass props through Link */}
-          <Link to={{ pathname: `/edit/${plan.id}`, state: { plan } }}>
+          <Link to={{ pathname: `/plans/${plan.id}/edit`, state: { plan } }}>
             editar
           </Link>
         </Cell>

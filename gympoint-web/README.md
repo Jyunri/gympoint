@@ -8,6 +8,7 @@
 [] Adicionar validacoes no login
 [] Adicionar proptypes
 [] Adicionar imagem de avatar
+[] Implementar mecanismo de busca
 [P] Colorir o link do Header de acordo com a pagina atual
   - Entender pq nao pode enviar props do tipo bool no Link
   - Entender como acessar props de elementos aninhados
