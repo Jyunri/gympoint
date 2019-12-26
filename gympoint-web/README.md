@@ -11,3 +11,10 @@
 [] Verificar pq a cor do voltar nao esta cinza usando props no styled-component
 [] Ajustar o grid para ficar responsivo
 [] Extrair o Row e o Cell para uma componente
+
+## Nice to haves
+[] Extrair layout de form de aluno
+[] Validacoes de props
+
+## Duvidas
+1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux

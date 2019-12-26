@@ -8,6 +8,7 @@ import Plans from '~/pages/Plans';
 import Enrollments from '~/pages/Enrollments';
 import Tickets from '~/pages/Tickets';
 import RegisterStudent from '~/pages/RegisterStudent';
+import EditStudent from '~/pages/EditStudent';
 
 export default function Routes() {
   return (
@@ -15,6 +16,7 @@ export default function Routes() {
       <Route path="/" exact component={SignIn} />
       <Route path="/students" component={Students} isPrivate />
       <Route path="/register" component={RegisterStudent} isPrivate />
+      <Route path="/edit" component={EditStudent} isPrivate />
       <Route path="/plans" component={Plans} isPrivate />
       <Route path="/enrollments" component={Enrollments} isPrivate />
       <Route path="/tickets" component={Tickets} isPrivate />

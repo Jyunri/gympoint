@@ -42,7 +42,8 @@ export default function Students() {
           <span>{student.age}</span>
         </Cell>
         <Cell size={15}>
-          <Link to="/edit" student={student}>
+          {/* workaround to pass props through Link */}
+          <Link to={{ pathname: `/edit/${student.id}`, state: { student } }}>
             editar
           </Link>
         </Cell>
