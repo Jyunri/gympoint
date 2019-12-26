@@ -57,7 +57,7 @@ export const Row = styled.li`
   }
 
   a {
-    color: '#4D85EE';
+    color: #4d85ee;
   }
 
   button {

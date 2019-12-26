@@ -8,7 +8,8 @@
 ## Cadastro de matricula
 [] Buscar dinamicamente os alunos e os planos (react select)
 
-
+# Tickets
+[] Renderizar modal
 
 [] Arrumar o header dinamico para paginas filhas
 [X] Colocar formatacao nos valores de data
