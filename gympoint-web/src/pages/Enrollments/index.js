@@ -22,7 +22,7 @@ export default function Enrollments() {
   }
 
   async function handleDelete(enrollment) {
-    const confirmMessage = `Deseja realmente excluir o registro ${enrollment.id}?`;
+    const confirmMessage = `Deseja realmente excluir o registro de ${enrollment.student.name}?`;
 
     // eslint-disable-next-line no-restricted-globals
     if (confirm(confirmMessage)) {
