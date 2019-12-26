@@ -5,7 +5,9 @@
 [] Extrair cores
 [] Adicionar proptypes
 [] Adicionar imagem de avatar
-[] Colorir o link do Header de acordo com a pagina atual
+[P] Colorir o link do Header de acordo com a pagina atual
+  - Entender pq nao pode enviar props do tipo bool no Link
+  - Entender como acessar props de elementos aninhados
 [] Fazer o header das listas
 [] Ajustar o estilo das listas
 [] Verificar pq a cor do voltar nao esta cinza usando props no styled-component

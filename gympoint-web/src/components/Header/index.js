@@ -1,15 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Container, Content, Profile } from './styles';
+// import { Link } from 'react-router-dom';
+import { Container, Content, Profile, NavLink } from './styles';
 import logo from '~/assets/images/header-logo.png';
 import { signOut } from '~/store/modules/auth/actions';
 
-export default function Header() {
+export default function Header({ currentPath }) {
   const dispatch = useDispatch();
 
   function handleSignOut() {
     dispatch(signOut());
+  }
+
+  function isCurrentPath(path) {
+    return (currentPath === path).toString();
   }
 
   return (
@@ -17,10 +21,18 @@ export default function Header() {
       <Content>
         <nav>
           <img src={logo} alt="GymPoint" />
-          <Link to="/students">ALUNOS</Link>
-          <Link to="/plans">PLANOS</Link>
-          <Link to="/enrollments">MATRÍCULAS</Link>
-          <Link to="/tickets">PEDIDOS DE AUXÍLIO</Link>
+          <NavLink to="/students" current={isCurrentPath('/students')}>
+            ALUNOS
+          </NavLink>
+          <NavLink to="/plans" current={isCurrentPath('/plans')}>
+            PLANOS
+          </NavLink>
+          <NavLink to="/enrollments" current={isCurrentPath('/enrollments')}>
+            MATRÍCULAS
+          </NavLink>
+          <NavLink to="/tickets" current={isCurrentPath('/tickets')}>
+            PEDIDOS DE AUXÍLIO
+          </NavLink>
         </nav>
 
         <aside>

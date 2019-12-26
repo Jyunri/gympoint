@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { coralRed, lightBlack } from '~/styles/colors';
+import { Link } from 'react-router-dom';
+import { coralRed, lightBlack, lightGrey } from '~/styles/colors';
 
 export const Container = styled.div`
   background: #fff;
@@ -23,18 +24,18 @@ export const Content = styled.div`
       padding-right: 20px;
       border-right: 1px solid #ddd;
     }
-
-    a {
-      margin-right: 20px;
-      font-weight: bold;
-      color: #333;
-    }
   }
 
   aside {
     display: flex;
     align-items: center;
   }
+`;
+
+export const NavLink = styled(Link)`
+  margin-right: 20px;
+  font-weight: bold;
+  color: ${props => (props.current === 'true' ? '#333' : '#999')};
 `;
 
 export const Profile = styled.div`

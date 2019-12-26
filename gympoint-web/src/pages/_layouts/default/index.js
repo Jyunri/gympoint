@@ -7,7 +7,7 @@ import Header from '~/components/Header';
 export default function DefaultLayout({ children }) {
   return (
     <Wrapper>
-      <Header />
+      <Header currentPath={children.props.location.pathname} />
       {children}
     </Wrapper>
   );
