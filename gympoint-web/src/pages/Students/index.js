@@ -8,11 +8,12 @@ import api from '~/services/api';
 export default function Students() {
   const [students, setStudents] = useState([]);
 
+  async function loadStudents() {
+    const response = await api.get('students');
+    setStudents(response.data);
+  }
+
   useEffect(() => {
-    async function loadStudents() {
-      const response = await api.get('students');
-      setStudents(response.data);
-    }
     loadStudents();
   }, []);
 
@@ -20,12 +21,13 @@ export default function Students() {
     history.push('/register');
   }
 
-  function handleDelete(student) {
+  async function handleDelete(student) {
     const confirmMessage = `Deseja realmente excluir o registro ${student.email}?`;
 
     // eslint-disable-next-line no-restricted-globals
     if (confirm(confirmMessage)) {
-      console.log(1);
+      await api.delete(`students/${student.id}`);
+      loadStudents();
     }
   }
 
