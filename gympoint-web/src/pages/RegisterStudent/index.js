@@ -1,9 +1,17 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { Container, ConfirmButton, CancelButton } from './styles';
 import history from '~/services/history';
+import { registerStudentRequest } from '~/store/modules/students/actions';
 
 export default function RegisterStudent() {
+  const dispatch = useDispatch();
+
+  function handleSubmit(data) {
+    dispatch(registerStudentRequest(data));
+  }
+
   return (
     <Container>
       <header>
@@ -12,12 +20,12 @@ export default function RegisterStudent() {
           <CancelButton type="button" onClick={() => history.push('/students')}>
             Voltar
           </CancelButton>
-          <ConfirmButton type="button" onClick={() => console.log(1)}>
+          <ConfirmButton type="submit" form="form">
             Salvar
           </ConfirmButton>
         </div>
       </header>
-      <Form>
+      <Form id="form" onSubmit={handleSubmit}>
         <label htmlFor="name">
           <strong>NOME COMPLETO</strong>
           <Input name="name" placeholder="John Doe" />
@@ -25,7 +33,7 @@ export default function RegisterStudent() {
 
         <label htmlFor="email">
           <strong>ENDEREÇO DE EMAIL</strong>
-          <Input name="email" placeholder="exemplo@email.com" />
+          <Input name="email" type="email" placeholder="exemplo@email.com" />
         </label>
 
         <div>
