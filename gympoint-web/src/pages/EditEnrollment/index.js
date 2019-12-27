@@ -3,8 +3,13 @@ import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { useParams } from 'react-router-dom';
 import AsyncSelect from 'react-select/async';
+import { addMonths } from 'date-fns';
 import { Container, ConfirmButton, CancelButton } from './styles';
-import { ISOtoSlashDate } from '~/utils/formatters/date';
+import {
+  ISOtoSlashDate,
+  datetoSlashDate,
+  datetoKebabDate,
+} from '~/utils/formatters/date';
 import history from '~/services/history';
 import { updatePlanRequest } from '~/store/modules/plans/actions';
 import api from '~/services/api';
@@ -17,6 +22,8 @@ export default function EditEnrollment() {
 
   const [enrollment, setEnrollment] = useState({});
   const [plan, setPlan] = useState({});
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   useEffect(() => {
     async function loadEnrollment() {
@@ -41,12 +48,20 @@ export default function EditEnrollment() {
 
       setEnrollment(responseEnrollment);
       setPlan(responsePlan);
+      setStartDate(new Date(data.start_date));
     }
 
     loadEnrollment();
   }, [id]);
 
+  useEffect(() => {
+    if (plan.duration && startDate !== {}) {
+      setEndDate(datetoSlashDate(addMonths(startDate, plan.duration)));
+    }
+  }, [plan, startDate]);
+
   function handleSubmit(data) {
+    console.log(data);
     // dispatch(
     //   updateEnrollmentRequest({
     //     ...data,
@@ -74,6 +89,13 @@ export default function EditEnrollment() {
         resolve(filterPlans(inputValue));
       }, 1000);
     });
+  }
+
+  function handleSetStartDate(date) {
+    if (date) {
+      const parsedDate = new Date(date);
+      setStartDate(parsedDate);
+    }
   }
 
   return (
@@ -114,26 +136,33 @@ export default function EditEnrollment() {
                 duration: plan.duration,
                 price: plan.price,
               }}
-              onChange={e =>
+              onChange={e => {
                 setPlan({
                   id: e.value,
                   title: e.label,
                   duration: e.duration,
                   price: e.price,
-                })
-              }
+                });
+                setEndDate(
+                  datetoSlashDate(addMonths(startDate, plan.duration))
+                );
+              }}
             />
-            {/* <Input name="plan" placeholder="Buscar plano" /> */}
           </label>
 
           <label htmlFor="startDate">
             <strong>DATA DE INÍCIO</strong>
-            <Input name="startDate" />
+            <Input
+              name="startDate"
+              type="date"
+              value={datetoKebabDate(startDate)}
+              onChange={e => handleSetStartDate(e.target.value)}
+            />
           </label>
 
           <label htmlFor="endDate">
             <strong>DATA DE TÉRMINO</strong>
-            <Input name="endDate" />
+            <Input readOnly name="endDate" value={endDate} />
           </label>
 
           <label htmlFor="totalPrice">
@@ -141,7 +170,7 @@ export default function EditEnrollment() {
             <Input
               readOnly
               name="totalPrice"
-              value={plan.price * plan.duration}
+              value={String(plan.price * plan.duration)}
             />
           </label>
         </div>

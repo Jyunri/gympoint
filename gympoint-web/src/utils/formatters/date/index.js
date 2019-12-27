@@ -12,3 +12,11 @@ export function ISOtoHumanDate(date) {
 export function ISOtoSlashDate(date) {
   return format(parseISO(date), 'dd/MM/yyyy', { locale: pt });
 }
+
+export function datetoSlashDate(date) {
+  return format(date, 'dd/MM/yyyy', { locale: pt });
+}
+
+export function datetoKebabDate(date) {
+  return format(date, 'yyyy-MM-dd', { locale: pt });
+}
