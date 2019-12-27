@@ -47,6 +47,10 @@ export const Container = styled.div`
         &::placeholder {
           color: #ddd;
         }
+
+        &:read-only {
+          background: #ddd;
+        }
       }
     }
 

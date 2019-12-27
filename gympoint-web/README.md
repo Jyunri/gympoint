@@ -3,7 +3,7 @@
 ## Geral
 [] Não realize formatações de valores dentro do return () nos componentes React, opte por formatar os dados assim que recebidos da API
 [P] Colorir o link do Header de acordo com a pagina atual
-  - Entender pq nao pode enviar props do tipo bool no Link
+  - Entender pq nao pode enviar props do tipo boolean no Link
   - Entender como acessar props de elementos aninhados
 [] Arrumar o header dinamico para paginas filhas
 [X] Colocar formatacao nos valores de data
@@ -11,30 +11,32 @@
 [X] Colocar sufixo nas duracoes de planos
 [X] Fazer o header das listas
 [X] Ajustar o estilo das listas
-[ ] Adicionar label nos forms
+[X] Adicionar label nos forms
   - Entender o que sao os warning
-[] Adicionar proptypes
 [X] Ajustar o grid para ficar responsivo
   - Utilizado o flex-basis
 
 ## Alunos
-[] Implementar mecanismo de busca
+[X] Implementar mecanismo de busca
 
 ## Login
 [] Adicionar labels no login
 [] Adicionar validacoes no login
 
 ## Planos
-[] Lidar com o preco total dos planos
+[X] Lidar com o preco total
 
 ## Matriculas
 [] Buscar dinamicamente os alunos e os planos na tela de cadastro(react select)
+[] Lidar com o preco total
+  - Precisa fazer o seletor dinamico
 
 ## Tickets
-[] Renderizar modal
+[X] Renderizar modal
 
 
 ## Nice to haves
+[] Adicionar proptypes
 [] Adicionar imagem de avatar
 [] Extrair cores
 [] Extrair layout de form de aluno
@@ -49,3 +51,6 @@
 
 ## Duvidas
 1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux
+
+## OBS
+Utilizei o operador iLike inves do like para a busca de alunos ser case insensitive

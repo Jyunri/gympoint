@@ -14,11 +14,16 @@ export default function EditPlan() {
   const { id } = useParams();
 
   const [plan, setPlan] = useState({});
+  const [duration, setDuration] = useState(0);
+  const [price, setPrice] = useState(0);
 
   useEffect(() => {
     async function loadPlan() {
       const response = await api.get(`plans/${id}`);
-      setPlan(response.data);
+      const plan = response.data;
+      setPlan(plan);
+      setDuration(plan.duration);
+      setPrice(plan.price);
     }
 
     loadPlan();
@@ -55,17 +60,20 @@ export default function EditPlan() {
         <div>
           <label htmlFor="duration">
             <strong>DURAÇÃO (em meses)</strong>
-            <Input name="duration" />
+            <Input
+              name="duration"
+              onChange={e => setDuration(e.target.value)}
+            />
           </label>
 
           <label htmlFor="price">
             <strong>PREÇO MENSAL</strong>
-            <Input name="price" />
+            <Input name="price" onChange={e => setPrice(e.target.value)} />
           </label>
 
           <label htmlFor="totalPrice">
             <strong>PREÇO TOTAL</strong>
-            <Input name="totalPrice" />
+            <Input readOnly name="totalPrice" value={price * duration} />
           </label>
         </div>
       </Form>

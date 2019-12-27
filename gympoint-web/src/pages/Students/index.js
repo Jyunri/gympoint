@@ -7,15 +7,16 @@ import api from '~/services/api';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
-
-  async function loadStudents() {
-    const response = await api.get('students');
-    setStudents(response.data);
-  }
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
+    async function loadStudents() {
+      const response = await api.get(`students?q=${filter}`);
+      setStudents(response.data);
+    }
+
     loadStudents();
-  }, []);
+  }, [filter, students]);
 
   function handleRegister() {
     history.push('/students/register');
@@ -27,7 +28,6 @@ export default function Students() {
     // eslint-disable-next-line no-restricted-globals
     if (confirm(confirmMessage)) {
       await api.delete(`students/${student.id}`);
-      loadStudents();
     }
   }
 
@@ -72,7 +72,10 @@ export default function Students() {
           <button type="button" onClick={handleRegister}>
             Cadastrar
           </button>
-          <input placeholder="Buscar aluno" />
+          <input
+            placeholder="Buscar aluno"
+            onChange={e => setFilter(e.target.value)}
+          />
         </div>
       </header>
 

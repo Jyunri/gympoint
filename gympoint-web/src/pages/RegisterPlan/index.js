@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { Container, ConfirmButton, CancelButton } from './styles';
@@ -7,6 +7,8 @@ import { registerPlanRequest } from '~/store/modules/plans/actions';
 
 export default function RegisterPlan() {
   const dispatch = useDispatch();
+  const [duration, setDuration] = useState(0);
+  const [price, setPrice] = useState(0);
 
   function handleSubmit(data) {
     dispatch(registerPlanRequest(data));
@@ -34,17 +36,20 @@ export default function RegisterPlan() {
         <div>
           <label htmlFor="duration">
             <strong>DURAÇÃO (em meses)</strong>
-            <Input name="duration" />
+            <Input
+              name="duration"
+              onChange={e => setDuration(e.target.value)}
+            />
           </label>
 
           <label htmlFor="price">
             <strong>PREÇO MENSAL</strong>
-            <Input name="price" />
+            <Input name="price" onChange={e => setPrice(e.target.value)} />
           </label>
 
           <label htmlFor="totalPrice">
             <strong>PREÇO TOTAL</strong>
-            <Input name="totalPrice" />
+            <Input readOnly name="totalPrice" value={price * duration} />
           </label>
         </div>
       </Form>
