@@ -42,6 +42,7 @@
 [] Extrair estilizacao das listas
 [] Fazer uma seed para varios testes
 [] Extrair o Row e o Cell para uma componente
+[] Componentizar botao
 
 [] Adicione paginação no front-end e back-end para todas listagens;
 [] Utilize máscaras para inputs numéricos de valores, peso e altura;
