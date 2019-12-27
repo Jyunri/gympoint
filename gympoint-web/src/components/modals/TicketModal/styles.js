@@ -15,6 +15,7 @@ export const Content = styled.div`
   span {
     margin-bottom: 30px;
     color: ${fadedGrey};
+    line-height: 1.6;
   }
 
   form {
@@ -32,14 +33,16 @@ export const Content = styled.div`
         font-size: 14px;
       }
 
-      input {
+      textarea {
         background: #fff;
         border: 1px solid #ddd;
         border-radius: 4px;
         height: 127px;
         padding: 15px;
         color: ${lightBlack};
+        font-size: 14px;
         margin: 0 0 10px;
+        resize: none;
 
         &::placeholder {
           color: #ddd;

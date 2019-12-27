@@ -30,7 +30,7 @@ export default function TicketModal({ modalIsOpen, onClose, ticket }) {
         <Form>
           <label htmlFor="answer">
             <strong>SUA RESPOSTA</strong>
-            <Input name="answer" />
+            <Input multiline name="answer" />
           </label>
           <button type="submit">Responder aluno</button>
         </Form>
