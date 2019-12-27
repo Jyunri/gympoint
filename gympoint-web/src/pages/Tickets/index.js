@@ -7,7 +7,7 @@ import TicketModal from '~/components/modals/TicketModal';
 export default function Tickets() {
   const [tickets, setTickets] = useState([]);
   const [currentTicket, setCurrentTicket] = useState({});
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   async function loadTickets() {
     const response = await api.get('help-orders');
@@ -16,7 +16,7 @@ export default function Tickets() {
 
   useEffect(() => {
     loadTickets();
-  }, []);
+  }, [tickets]);
 
   function handleAnswerTicket(ticket) {
     setCurrentTicket(ticket);
@@ -55,6 +55,10 @@ export default function Tickets() {
       <TicketModal
         modalIsOpen={modalIsOpen}
         onClose={closeModal}
+        onSubmit={() => {
+          closeModal();
+          loadTickets();
+        }}
         ticket={currentTicket}
       />
       <ul>

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Modal from 'react-modal';
 import { Form, Input } from '@rocketseat/unform';
 import { Content } from './styles';
+import { answerTicketRequest } from '~/store/modules/tickets/actions';
 
 const customStyles = {
   content: {
@@ -17,6 +19,18 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 export default function TicketModal({ modalIsOpen, onClose, ticket }) {
+  const dispatch = useDispatch();
+
+  function handleSubmit(data) {
+    dispatch(
+      answerTicketRequest({
+        ...data,
+        id: ticket.id,
+      })
+    );
+    onClose();
+  }
+
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -27,7 +41,7 @@ export default function TicketModal({ modalIsOpen, onClose, ticket }) {
       <Content>
         <strong>PERGUNTA DO ALUNO</strong>
         <span>{ticket.question}</span>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <label htmlFor="answer">
             <strong>SUA RESPOSTA</strong>
             <Input multiline name="answer" />
