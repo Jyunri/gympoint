@@ -48,6 +48,24 @@ export const Container = styled.div`
           color: #ddd;
         }
       }
+
+      .react-select__control {
+        width: 100%;
+        border: 1px solid #ddd;
+        height: 44px;
+      }
+
+      .react-select__value-container {
+        height: 44px;
+        align-content: center;
+        color: ${fadedGrey};
+      }
+
+      .react-select__menu-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
     }
 
     div {

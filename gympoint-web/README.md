@@ -51,6 +51,7 @@
 
 ## Duvidas
 1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux
+2. Quando vou tentar colocar algum input no AsyncSelect do react-select o placeholder sobe
 
 ## OBS
 Utilizei o operador iLike inves do like para a busca de alunos ser case insensitive

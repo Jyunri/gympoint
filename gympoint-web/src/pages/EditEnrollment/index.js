@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
 import { useParams } from 'react-router-dom';
+import AsyncSelect from 'react-select/async';
 import { Container, ConfirmButton, CancelButton } from './styles';
 import { ISOtoSlashDate } from '~/utils/formatters/date';
 import history from '~/services/history';
@@ -15,6 +16,7 @@ export default function EditEnrollment() {
   const { id } = useParams();
 
   const [enrollment, setEnrollment] = useState({});
+  const [plan, setPlan] = useState({});
 
   useEffect(() => {
     async function loadEnrollment() {
@@ -22,12 +24,23 @@ export default function EditEnrollment() {
 
       const responseEnrollment = {
         student: data.student.name,
-        plan: data.plan.title,
+        student_id: data.student.id,
+        plan_id: data.plan.id,
         startDate: ISOtoSlashDate(data.start_date),
         endDate: ISOtoSlashDate(data.end_date),
       };
 
+      const { plan } = data;
+
+      const responsePlan = {
+        id: plan.id,
+        title: plan.title,
+        duration: plan.duration,
+        price: plan.price,
+      };
+
       setEnrollment(responseEnrollment);
+      setPlan(responsePlan);
     }
 
     loadEnrollment();
@@ -40,6 +53,27 @@ export default function EditEnrollment() {
     //     id: enrolllment.id,
     //   })
     // );
+  }
+
+  async function filterPlans(inputValue) {
+    const response = await api.get('plans');
+
+    const filteredPlans = response.data.filter(plan =>
+      plan.title.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    return filteredPlans.map(plan => ({
+      label: plan.title,
+      value: plan.id,
+      ...plan,
+    }));
+  }
+
+  function plansOptions(inputValue) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(filterPlans(inputValue));
+      }, 1000);
+    });
   }
 
   return (
@@ -61,13 +95,35 @@ export default function EditEnrollment() {
       <Form id="form" initialData={enrollment} onSubmit={handleSubmit}>
         <label htmlFor="student">
           <strong>ALUNO</strong>
-          <Input name="student" placeholder="Buscar aluno" />
+          <Input readOnly name="student" placeholder="Buscar aluno" />
         </label>
 
         <div>
           <label htmlFor="plan">
             <strong>PLANO</strong>
-            <Input name="plan" placeholder="Buscar plano" />
+            <AsyncSelect
+              className="react-select-container"
+              classNamePrefix="react-select"
+              placeholder="Buscar plano"
+              cacheOptions
+              defaultOptions
+              loadOptions={plansOptions}
+              value={{
+                value: plan.id,
+                label: plan.title,
+                duration: plan.duration,
+                price: plan.price,
+              }}
+              onChange={e =>
+                setPlan({
+                  id: e.value,
+                  title: e.label,
+                  duration: e.duration,
+                  price: e.price,
+                })
+              }
+            />
+            {/* <Input name="plan" placeholder="Buscar plano" /> */}
           </label>
 
           <label htmlFor="startDate">
@@ -82,7 +138,11 @@ export default function EditEnrollment() {
 
           <label htmlFor="totalPrice">
             <strong>VALOR FINAL</strong>
-            <Input name="totalPrice" />
+            <Input
+              readOnly
+              name="totalPrice"
+              value={plan.price * plan.duration}
+            />
           </label>
         </div>
       </Form>
