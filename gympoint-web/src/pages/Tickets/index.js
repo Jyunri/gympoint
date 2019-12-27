@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 import { Container, Row, Cell } from './styles';
 import api from '~/services/api';
+import TicketModal from '~/components/modals/TicketModal';
 
 export default function Tickets() {
   const [tickets, setTickets] = useState([]);
+  const [currentTicket, setCurrentTicket] = useState({});
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   async function loadTickets() {
     const response = await api.get('help-orders');
@@ -15,6 +18,15 @@ export default function Tickets() {
     loadTickets();
   }, []);
 
+  function handleAnswerTicket(ticket) {
+    setCurrentTicket(ticket);
+    setModalIsOpen(true);
+  }
+
+  function closeModal() {
+    setModalIsOpen(false);
+  }
+
   function renderTicket(ticket) {
     return (
       <Row key={ticket.id}>
@@ -22,7 +34,11 @@ export default function Tickets() {
           <span>{ticket.student.name}</span>
         </Cell>
         <Cell size={20}>
-          <button type="button" onClick={() => console.log(1)} ticket={ticket}>
+          <button
+            type="button"
+            onClick={() => handleAnswerTicket(ticket)}
+            ticket={ticket}
+          >
             responder
           </button>
         </Cell>
@@ -36,6 +52,11 @@ export default function Tickets() {
         <strong>Pedidos de auxílio</strong>
       </header>
 
+      <TicketModal
+        modalIsOpen={modalIsOpen}
+        onClose={closeModal}
+        ticket={currentTicket}
+      />
       <ul>
         <Row>
           <Cell size={80}>
