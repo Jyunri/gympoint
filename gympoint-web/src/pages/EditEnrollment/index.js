@@ -11,7 +11,7 @@ import {
   datetoKebabDate,
 } from '~/utils/formatters/date';
 import history from '~/services/history';
-import { updatePlanRequest } from '~/store/modules/plans/actions';
+import { updateEnrollmentRequest } from '~/store/modules/enrollments/actions';
 import api from '~/services/api';
 
 export default function EditEnrollment() {
@@ -37,13 +37,11 @@ export default function EditEnrollment() {
         endDate: ISOtoSlashDate(data.end_date),
       };
 
-      const { plan } = data;
-
       const responsePlan = {
-        id: plan.id,
-        title: plan.title,
-        duration: plan.duration,
-        price: plan.price,
+        id: data.plan.id,
+        title: data.plan.title,
+        duration: data.plan.duration,
+        price: data.plan.price,
       };
 
       setEnrollment(responseEnrollment);
@@ -61,25 +59,26 @@ export default function EditEnrollment() {
   }, [plan, startDate]);
 
   function handleSubmit(data) {
-    console.log(data);
-    // dispatch(
-    //   updateEnrollmentRequest({
-    //     ...data,
-    //     id: enrolllment.id,
-    //   })
-    // );
+    dispatch(
+      updateEnrollmentRequest({
+        ...data,
+        id,
+        plan_id: plan.id,
+        start_date: startDate,
+      })
+    );
   }
 
   async function filterPlans(inputValue) {
     const response = await api.get('plans');
 
-    const filteredPlans = response.data.filter(plan =>
-      plan.title.toLowerCase().includes(inputValue.toLowerCase())
+    const filteredPlans = response.data.filter(p =>
+      p.title.toLowerCase().includes(inputValue.toLowerCase())
     );
-    return filteredPlans.map(plan => ({
-      label: plan.title,
-      value: plan.id,
-      ...plan,
+    return filteredPlans.map(fp => ({
+      label: fp.title,
+      value: fp.id,
+      ...fp,
     }));
   }
 
