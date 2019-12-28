@@ -20,3 +20,7 @@ export function datetoSlashDate(date) {
 export function datetoKebabDate(date) {
   return format(date, 'yyyy-MM-dd', { locale: pt });
 }
+
+export function kebabToSlashDate(date) {
+  return date.replace(/-/g, '/');
+}

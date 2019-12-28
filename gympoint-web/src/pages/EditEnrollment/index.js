@@ -9,6 +9,7 @@ import {
   ISOtoSlashDate,
   datetoSlashDate,
   datetoKebabDate,
+  kebabToSlashDate,
 } from '~/utils/formatters/date';
 import history from '~/services/history';
 import { updateEnrollmentRequest } from '~/store/modules/enrollments/actions';
@@ -65,6 +66,7 @@ export default function EditEnrollment() {
         id,
         plan_id: plan.id,
         start_date: startDate,
+        student_id: enrollment.student_id,
       })
     );
   }
@@ -92,7 +94,7 @@ export default function EditEnrollment() {
 
   function handleSetStartDate(date) {
     if (date) {
-      const parsedDate = new Date(date);
+      const parsedDate = new Date(kebabToSlashDate(date));
       setStartDate(parsedDate);
     }
   }
