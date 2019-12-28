@@ -20,13 +20,19 @@ export default function SignIn() {
         <img src={logo} alt="GoBarber" />
 
         <Form onSubmit={handleSubmit}>
-          <Input name="email" type="email" placeholder="exemplo@email.com" />
+          <label htmlFor="email">
+            <strong>SEU E-MAIL</strong>
+            <Input name="email" type="email" placeholder="exemplo@email.com" />
+          </label>
 
-          <Input
-            name="password"
-            type="password"
-            placeholder="Sua senha secreta"
-          />
+          <label htmlFor="email">
+            <strong>SUA SENHA</strong>
+            <Input
+              name="password"
+              type="password"
+              placeholder="Sua senha secreta"
+            />
+          </label>
 
           <button type="submit">
             {loading ? 'Carregando...' : 'Entrar no sistema'}

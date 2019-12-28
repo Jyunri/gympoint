@@ -23,17 +23,29 @@ export const Content = styled.div`
     flex-direction: column;
     margin-top: 30px;
 
-    input {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      height: 44px;
-      padding: 0 15px;
-      color: #000;
-      margin: 0 0 10px;
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      text-align: start;
 
-      &::placeholder {
-        color: #999;
+      strong {
+        margin-bottom: 10px;
+        font-size: 12px;
+      }
+
+      input {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        height: 44px;
+        padding: 0 15px;
+        color: #000;
+        margin: 0 0 10px;
+
+        &::placeholder {
+          color: #999;
+        }
       }
     }
 
