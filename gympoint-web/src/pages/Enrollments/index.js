@@ -4,12 +4,14 @@ import { ISOtoHumanDate } from '~/utils/formatters/date';
 import { Container, Row, Cell } from './styles';
 import history from '~/services/history';
 import api from '~/services/api';
+import Pagination from '~/components/Pagination';
 
 export default function Enrollments() {
   const [enrollments, setEnrollments] = useState([]);
+  const [currentPage, setPage] = useState(1);
 
   async function loadEnrollments() {
-    const response = await api.get('enrollments');
+    const response = await api.get(`enrollments?page=${currentPage}`);
 
     const parsedData = response.data.map(enrollment => ({
       ...enrollment,
@@ -22,7 +24,7 @@ export default function Enrollments() {
 
   useEffect(() => {
     loadEnrollments();
-  }, []);
+  }, [currentPage]); // eslint-disable-line
 
   function handleRegister() {
     history.push('/enrollments/register');
@@ -114,6 +116,12 @@ export default function Enrollments() {
         </Row>
         {enrollments.map(enrollment => renderEnrollment(enrollment))}
       </ul>
+
+      <Pagination
+        currentPage={currentPage}
+        onPrev={() => setPage(currentPage - 1)}
+        onNext={() => setPage(currentPage + 1)}
+      />
     </Container>
   );
 }

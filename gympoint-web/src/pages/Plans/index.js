@@ -6,12 +6,14 @@ import { toBRL } from '~/utils/formatters/price';
 import { Container, Row, Cell } from './styles';
 import history from '~/services/history';
 import api from '~/services/api';
+import Pagination from '~/components/Pagination';
 
 export default function Plans() {
   const [plans, setPlans] = useState([]);
+  const [currentPage, setPage] = useState(1);
 
   async function loadPlans() {
-    const response = await api.get('plans');
+    const response = await api.get(`plans?page=${currentPage}`);
 
     const parsedData = response.data.map(plan => ({
       ...plan,
@@ -24,7 +26,7 @@ export default function Plans() {
 
   useEffect(() => {
     loadPlans();
-  }, []);
+  }, [currentPage]); // eslint-disable-line
 
   function handleRegister() {
     history.push('/plans/register');
@@ -95,6 +97,12 @@ export default function Plans() {
         </Row>
         {plans.map(plan => renderPlan(plan))}
       </ul>
+
+      <Pagination
+        currentPage={currentPage}
+        onPrev={() => setPage(currentPage - 1)}
+        onNext={() => setPage(currentPage + 1)}
+      />
     </Container>
   );
 }
