@@ -46,7 +46,7 @@
 [X] Extrair cores
 [] Extrair layout de form de aluno
 [] Extrair estilizacao das listas
-[] Fazer uma seed para varios testes
+[?] Fazer uma seed para varios testes
 [] Extrair o Row e o Cell para uma componente
 [] Componentizar botao
 
@@ -54,8 +54,9 @@
 [] Utilize máscaras para inputs numéricos de valores, peso e altura;
 
 ## Duvidas
-1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux
+1. Provavelmente a maioria dos estados nao precisavam ser gerenciados pelo redux(?) Grande parte dos estados sao escopados por pagina
 2. Quando vou tentar colocar algum input no AsyncSelect do react-select o placeholder sobe ¯\_(ツ)_/¯
+3. Como fazer seed migration de multiplas tabelas em um unico arquivo? Tem que usar o Promise.all?
 
 ## OBS
 Utilizei o operador iLike inves do like para a busca de alunos ser case insensitive
