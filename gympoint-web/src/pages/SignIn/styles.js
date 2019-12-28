@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   max-width: 360px;
-  max-height: 448px;
+  max-height: 600px;
   padding: 50px 30px;
   text-align: center;
   background: #fff;
@@ -46,6 +46,12 @@ export const Content = styled.div`
         &::placeholder {
           color: #999;
         }
+      }
+
+      span {
+        color: ${coralRed};
+        align-self: flex-start;
+        margin: 0 0 10px;
       }
     }
 

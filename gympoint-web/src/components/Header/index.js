@@ -13,8 +13,8 @@ export default function Header({ currentPath }) {
     dispatch(signOut());
   }
 
-  function isCurrentPath(path) {
-    return (currentPath === path).toString();
+  function currentPathStartsWith(path) {
+    return currentPath.startsWith(path).toString();
   }
 
   return (
@@ -22,16 +22,19 @@ export default function Header({ currentPath }) {
       <Content>
         <nav>
           <img src={logo} alt="GymPoint" />
-          <NavLink to="/students" current={isCurrentPath('/students')}>
+          <NavLink to="/students" current={currentPathStartsWith('/students')}>
             ALUNOS
           </NavLink>
-          <NavLink to="/plans" current={isCurrentPath('/plans')}>
+          <NavLink to="/plans" current={currentPathStartsWith('/plans')}>
             PLANOS
           </NavLink>
-          <NavLink to="/enrollments" current={isCurrentPath('/enrollments')}>
+          <NavLink
+            to="/enrollments"
+            current={currentPathStartsWith('/enrollments')}
+          >
             MATRÍCULAS
           </NavLink>
-          <NavLink to="/tickets" current={isCurrentPath('/tickets')}>
+          <NavLink to="/tickets" current={currentPathStartsWith('/tickets')}>
             PEDIDOS DE AUXÍLIO
           </NavLink>
         </nav>

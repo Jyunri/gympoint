@@ -5,7 +5,7 @@
 [P] Colorir o link do Header de acordo com a pagina atual
   - Entender pq nao pode enviar props do tipo boolean no Link
   - Entender como acessar props de elementos aninhados
-[] Arrumar o header dinamico para paginas filhas
+[X] Arrumar o header dinamico para paginas filhas
 [X] Colocar formatacao nos valores de data
 [X] Colocar formatacao nos valores por mes
 [X] Colocar sufixo nas duracoes de planos
@@ -20,15 +20,15 @@
 [X] Implementar mecanismo de busca
 
 ## Login
-[] Adicionar labels no login
+[X] Adicionar labels no login
 [] Adicionar validacoes no login
 
 ## Planos
 [X] Lidar com o preco total
 
 ## Matriculas
-[] Buscar dinamicamente os alunos e os planos na tela de cadastro(react select)
-[] Lidar com o preco total
+[X] Buscar dinamicamente os alunos e os planos na tela de cadastro(react select)
+[X] Lidar com o preco total
   - Precisa fazer o seletor dinamico
 
 ## Tickets
