@@ -12,7 +12,14 @@ export default function Plans() {
 
   async function loadPlans() {
     const response = await api.get('plans');
-    setPlans(response.data);
+
+    const parsedData = response.data.map(plan => ({
+      ...plan,
+      parsedDuration: withMonthSuffix(plan.duration),
+      parsedPrice: toBRL(plan.price),
+    }));
+
+    setPlans(parsedData);
   }
 
   useEffect(() => {
@@ -40,10 +47,10 @@ export default function Plans() {
           <span>{plan.title}</span>
         </Cell>
         <Cell size={10}>
-          <span>{withMonthSuffix(plan.duration)}</span>
+          <span>{plan.parsedDuration}</span>
         </Cell>
         <Cell size={20}>
-          <span>{toBRL(plan.price)}</span>
+          <span>{plan.parsedPrice}</span>
         </Cell>
         <Cell size={20}>
           {/* workaround to pass props through Link */}

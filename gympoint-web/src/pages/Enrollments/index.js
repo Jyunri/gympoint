@@ -10,7 +10,14 @@ export default function Enrollments() {
 
   async function loadEnrollments() {
     const response = await api.get('enrollments');
-    setEnrollments(response.data);
+
+    const parsedData = response.data.map(enrollment => ({
+      ...enrollment,
+      parsedStartDate: ISOtoHumanDate(enrollment.start_date),
+      parsedEndDate: ISOtoHumanDate(enrollment.end_date),
+    }));
+
+    setEnrollments(parsedData);
   }
 
   useEffect(() => {
@@ -41,10 +48,10 @@ export default function Enrollments() {
           <span>{enrollment.plan.title}</span>
         </Cell>
         <Cell size={20}>
-          <span>{ISOtoHumanDate(enrollment.start_date)}</span>
+          <span>{enrollment.parsedStartDate}</span>
         </Cell>
         <Cell size={20}>
-          <span>{ISOtoHumanDate(enrollment.end_date)}</span>
+          <span>{enrollment.parsedEndDate}</span>
         </Cell>
         <Cell size={10}>
           <span>{enrollment.active ? 'SIM' : 'NÃO'}</span>

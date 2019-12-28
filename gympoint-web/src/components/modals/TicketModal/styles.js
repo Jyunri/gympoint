@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { coralRed, lightBlack, fadedGrey } from '~/styles/colors';
+import { white, coralRed, lightBlack, grey, lightGrey2 } from '~/styles/colors';
 
 export const Content = styled.div`
   display: flex;
@@ -14,14 +14,14 @@ export const Content = styled.div`
 
   span {
     margin-bottom: 30px;
-    color: ${fadedGrey};
+    color: ${grey};
     line-height: 1.6;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: ${white};
 
     label {
       display: flex;
@@ -34,8 +34,8 @@ export const Content = styled.div`
       }
 
       textarea {
-        background: #fff;
-        border: 1px solid #ddd;
+        background: ${white};
+        border: 1px solid ${lightGrey2};
         border-radius: 4px;
         height: 127px;
         padding: 15px;
@@ -45,7 +45,7 @@ export const Content = styled.div`
         resize: none;
 
         &::placeholder {
-          color: #ddd;
+          color: ${lightGrey2};
         }
       }
     }
@@ -57,7 +57,7 @@ export const Content = styled.div`
       border: 0;
       border-radius: 4px;
       background: ${coralRed};
-      color: #fff;
+      color: ${white};
       font-weight: bold;
       transition: background 0.2s;
 

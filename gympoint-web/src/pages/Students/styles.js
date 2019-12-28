@@ -1,6 +1,13 @@
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
-import { lightBlack, coralRed, fadedGrey } from '~/styles/colors';
+import {
+  white,
+  lightBlack,
+  coralRed,
+  grey,
+  fadedGrey,
+  skyBlue,
+} from '~/styles/colors';
 
 export const Container = styled.div`
   margin: 30px 120px;
@@ -25,7 +32,7 @@ export const Container = styled.div`
       border: 0;
       border-radius: 4px;
       background: ${coralRed};
-      color: #fff;
+      color: ${white};
       font-weight: bold;
       transition: background 0.2s;
 
@@ -40,13 +47,13 @@ export const Container = styled.div`
       text-align: center;
 
       &::placeholder {
-        color: #ddd;
+        color: ${fadedGrey};
       }
     }
   }
 
   ul {
-    background: #fff;
+    background: ${white};
     margin-top: 30px;
     border-radius: 4px;
   }
@@ -54,20 +61,16 @@ export const Container = styled.div`
 
 export const Row = styled.li`
   padding: 20px;
-  background: #fff;
+  background: ${white};
   display: flex;
   justify-content: space-between;
 
-  & + li {
-    border-top: 1px solid #eee;
-  }
-
   span {
-    color: ${fadedGrey};
+    color: ${grey};
   }
 
   a {
-    color: #4d85ee;
+    color: ${skyBlue};
   }
 
   button {

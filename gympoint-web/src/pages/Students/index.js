@@ -4,19 +4,23 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Cell } from './styles';
 import history from '~/services/history';
 import api from '~/services/api';
+import Pagination from '~/components/Pagination';
 
 export default function Students() {
   const [students, setStudents] = useState([]);
   const [filter, setFilter] = useState('');
+  const [currentPage, setPage] = useState(1);
 
   useEffect(() => {
     async function loadStudents() {
-      const response = await api.get(`students?q=${filter}`);
+      const response = await api.get(
+        `students?q=${filter}&page=${currentPage}`
+      );
       setStudents(response.data);
     }
 
     loadStudents();
-  }, [filter, students]);
+  }, [filter, currentPage]);
 
   function handleRegister() {
     history.push('/students/register');
@@ -28,6 +32,10 @@ export default function Students() {
     // eslint-disable-next-line no-restricted-globals
     if (confirm(confirmMessage)) {
       await api.delete(`students/${student.id}`);
+
+      // refresh student list, prevent infinite hook loop
+      const response = await api.get(`students?q=${filter}`);
+      setStudents(response.data);
     }
   }
 
@@ -96,6 +104,12 @@ export default function Students() {
         </Row>
         {students.map(student => renderStudent(student))}
       </ul>
+
+      <Pagination
+        currentPage={currentPage}
+        onPrev={() => setPage(currentPage - 1)}
+        onNext={() => setPage(currentPage + 1)}
+      />
     </Container>
   );
 }

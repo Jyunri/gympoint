@@ -1,9 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup';
 import { Container, ConfirmButton, CancelButton } from './styles';
 import history from '~/services/history';
 import { registerStudentRequest } from '~/store/modules/students/actions';
+
+const schema = Yup.object().shape({
+  name: Yup.string('Valor inválido').required('O email é obrigatório'),
+  email: Yup.string('Valor inválido').required('O email é obrigatório'),
+  age: Yup.string('Valor inválido').required('A idade é obrigatória'),
+  weight: Yup.string('Valor inválido').required('O peso é obrigatório'),
+  height: Yup.string('Valor inválido').required('A altura é obrigatório'),
+});
 
 export default function RegisterStudent() {
   const dispatch = useDispatch();
@@ -25,7 +34,7 @@ export default function RegisterStudent() {
           </ConfirmButton>
         </div>
       </header>
-      <Form id="form" onSubmit={handleSubmit}>
+      <Form id="form" schema={schema} onSubmit={handleSubmit}>
         <label htmlFor="name">
           <strong>NOME COMPLETO</strong>
           <Input name="name" placeholder="John Doe" />

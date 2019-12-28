@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { lightBlack, coralRed, fadedGrey } from '~/styles/colors';
+import {
+  white,
+  lightBlack,
+  coralRed,
+  lightGrey2,
+  fadedGrey,
+  grey,
+} from '~/styles/colors';
 
 export const Container = styled.div`
   margin: 30px 120px;
@@ -23,7 +30,7 @@ export const Container = styled.div`
     flex-direction: column;
     margin-top: 30px;
     padding: 30px;
-    background: #fff;
+    background: ${white};
 
     label {
       display: flex;
@@ -36,20 +43,20 @@ export const Container = styled.div`
       }
 
       input {
-        background: #fff;
-        border: 1px solid #ddd;
+        background: ${white};
+        border: 1px solid ${lightGrey2};
         border-radius: 4px;
         height: 44px;
         padding: 15px;
-        color: ${fadedGrey};
+        color: ${grey};
         margin: 0 0 10px;
 
         &::placeholder {
-          color: #ddd;
+          color: ${lightGrey2};
         }
 
         &:read-only {
-          background: #ddd;
+          background: ${lightGrey2};
         }
       }
     }
@@ -73,7 +80,7 @@ export const ConfirmButton = styled.button`
   border: 0;
   border-radius: 4px;
   background: ${coralRed};
-  color: #fff;
+  color: ${white};
   font-weight: bold;
   transition: background 0.2s;
 
@@ -89,12 +96,12 @@ export const CancelButton = styled.button`
 
   border: 0;
   border-radius: 4px;
-  background: #ccc;
-  color: #fff;
+  background: ${fadedGrey};
+  color: ${white};
   font-weight: bold;
   transition: background 0.2s;
 
   &:hover {
-    background: ${darken(0.08, '#ccc')};
+    background: ${darken(0.08, fadedGrey)};
   }
 `;

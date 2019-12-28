@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { coralRed } from '~/styles/colors';
+import { white, coralRed, grey, lightGrey2 } from '~/styles/colors';
 
 export const Container = styled.div`
   height: 100%;
@@ -16,7 +16,7 @@ export const Content = styled.div`
   max-height: 600px;
   padding: 50px 30px;
   text-align: center;
-  background: #fff;
+  background: ${white};
 
   form {
     display: flex;
@@ -35,8 +35,8 @@ export const Content = styled.div`
       }
 
       input {
-        background: #fff;
-        border: 1px solid #ddd;
+        background: ${white};
+        border: 1px solid ${lightGrey2};
         border-radius: 4px;
         height: 44px;
         padding: 0 15px;
@@ -44,7 +44,7 @@ export const Content = styled.div`
         margin: 0 0 10px;
 
         &::placeholder {
-          color: #999;
+          color: ${grey};
         }
       }
 
@@ -60,7 +60,7 @@ export const Content = styled.div`
       border: 0;
       border-radius: 4px;
       height: 44px;
-      color: #fff;
+      color: ${white};
       font-weight: bold;
       font-size: 14px;
       margin: 5px 0 0;
@@ -72,7 +72,7 @@ export const Content = styled.div`
     }
 
     a {
-      color: #fff;
+      color: ${white};
       margin-top: 15px;
       font-size: 16px;
       opacity: 0.8;

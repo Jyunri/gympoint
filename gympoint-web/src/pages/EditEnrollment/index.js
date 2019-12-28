@@ -153,7 +153,7 @@ export default function EditEnrollment() {
             <Input
               name="startDate"
               type="date"
-              value={datetoKebabDate(startDate)}
+              value={datetoKebabDate(startDate)} // for now, this parsing will remain here ¯\_(ツ)_/¯
               onChange={e => handleSetStartDate(e.target.value)}
             />
           </label>

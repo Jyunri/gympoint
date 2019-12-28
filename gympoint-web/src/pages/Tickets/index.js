@@ -16,7 +16,7 @@ export default function Tickets() {
 
   useEffect(() => {
     loadTickets();
-  }, [tickets]);
+  }, []);
 
   function handleAnswerTicket(ticket) {
     setCurrentTicket(ticket);
