@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { lightBlack, coralRed } from '~/styles/colors';
+import { lightBlack, coralRed, fadedGrey } from '~/styles/colors';
 
 export const Container = styled.div`
   margin: 30px 120px;
@@ -47,6 +47,29 @@ export const Container = styled.div`
         &::placeholder {
           color: #ddd;
         }
+
+        &:read-only {
+          background: #ddd;
+        }
+      }
+
+      .react-select__control {
+        width: 100%;
+        border: 1px solid #ddd;
+        height: 44px;
+        margin-bottom: 10px;
+      }
+
+      .react-select__value-container {
+        height: 44px;
+        align-content: center;
+        color: ${fadedGrey};
+      }
+
+      .react-select__menu-list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
       }
     }
 

@@ -144,9 +144,6 @@ export default function EditEnrollment() {
                   duration: e.duration,
                   price: e.price,
                 });
-                setEndDate(
-                  datetoSlashDate(addMonths(startDate, plan.duration))
-                );
               }}
             />
           </label>
