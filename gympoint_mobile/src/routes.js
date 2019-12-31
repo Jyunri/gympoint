@@ -4,11 +4,12 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Image } from 'react-native';
+import logo from '~/assets/header-logo.png';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
 import Tickets from './pages/Tickets';
+import Header from '~/components/Header';
 import { coralRed, white } from '~/styles/colors';
-import logo from '~/assets/header-logo.png';
 
 const AppTab = createBottomTabNavigator(
   {
@@ -37,6 +38,7 @@ export default (signed = false) =>
           {
             defaultNavigationOptions: {
               headerTitle: () => <Image source={logo} />,
+              headerRight: () => <Header />,
             },
           }
         ), // using stack to render same header; xgh sz
