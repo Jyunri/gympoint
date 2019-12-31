@@ -3,13 +3,13 @@ import { View } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function Dashboard() {
+export default function Tickets() {
   return <View />;
 }
 
-Dashboard.navigationOptions = {
-  tabBarLabel: 'Check-ins',
+Tickets.navigationOptions = {
+  tabBarLabel: 'Pedir Ajuda',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="event" size={20} color={tintColor} />
+    <Icon name="help" size={20} color={tintColor} />
   ),
 };
