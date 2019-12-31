@@ -5,8 +5,7 @@ import { signInSuccess, signFailure } from '~/store/modules/user/actions';
 
 export function* signIn({ payload }) {
   try {
-    const { studentId } = payload.data;
-
+    const { studentId } = payload;
     const response = yield call(api.get, `students/${studentId}`);
 
     yield put(signInSuccess(response.data));
@@ -20,4 +19,4 @@ export function* signIn({ payload }) {
   }
 }
 
-export default all([takeLatest('@user/SIGNIN_REQUEST', signIn)]);
+export default all([takeLatest('@user/SIGN_IN_REQUEST', signIn)]);

@@ -1,13 +1,13 @@
 export function signInRequest(studentId) {
   return {
-    type: '@user/SIGNIN_REQUEST',
+    type: '@user/SIGN_IN_REQUEST',
     payload: { studentId },
   };
 }
 
 export function signInSuccess(user) {
   return {
-    type: '@user/SIGNIN_SUCCESS',
+    type: '@user/SIGN_IN_SUCCESS',
     payload: { user },
   };
 }
