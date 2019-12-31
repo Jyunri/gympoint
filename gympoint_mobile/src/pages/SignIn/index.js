@@ -6,9 +6,7 @@ import logo from '~/assets/logo.png';
 
 import { Container, Form, FormInput, SubmitButton } from './styles';
 
-function handleSubmit() {
-
-}
+function handleSubmit() {}
 
 export default function SignIn() {
   return (
@@ -26,7 +24,9 @@ export default function SignIn() {
             onSubmitEditing={handleSubmit}
           />
 
-          <SubmitButton onPress={() => handleSubmit()>Entrar no sistema</SubmitButton>
+          <SubmitButton onPress={() => handleSubmit()}>
+            Entrar no sistema
+          </SubmitButton>
         </Form>
       </Container>
     </Background>
