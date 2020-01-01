@@ -21,9 +21,9 @@ routes.post('/students/:id/help-orders', HelpOrderController.store);
 routes.get('/help-orders', AnswerOrderController.index);
 routes.post('/help-orders/:id/answer', AnswerOrderController.store);
 
-routes.use(authMiddleware);
 routes.get('/students', StudentController.index);
 routes.get('/students/:id', StudentController.index);
+routes.use(authMiddleware);
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
 routes.delete('/students/:id', StudentController.delete);
