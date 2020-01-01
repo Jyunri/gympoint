@@ -9,7 +9,7 @@ import Button from '~/components/Button';
 import Ticket from '~/components/Ticket';
 import api from '~/services/api';
 
-export default function Tickets() {
+export default function Tickets({ navigation }) {
   const user = useSelector(state => state.user.profile.user);
   const [tickets, setTickets] = useState([]);
 
@@ -23,7 +23,13 @@ export default function Tickets() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.id]);
 
-  async function handleCreateTicket() {}
+  function handleCreateTicket() {
+    navigation.navigate('NewTicket');
+  }
+
+  function handleOpenTicketDetail(ticket) {
+    navigation.navigate('TicketDetail', { ticket });
+  }
 
   return (
     <Container>
@@ -31,7 +37,9 @@ export default function Tickets() {
       <List
         data={tickets}
         keyExtractor={item => String(item.id)}
-        renderItem={({ item }) => <Ticket data={item} />}
+        renderItem={({ item }) => (
+          <Ticket data={item} onPress={handleOpenTicketDetail} />
+        )}
       />
     </Container>
   );

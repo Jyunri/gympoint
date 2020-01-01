@@ -1,7 +1,8 @@
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 import { grey, fadedGrey, demonGrey, skyBlue } from '~/styles/colors';
 
-export const Container = styled.View`
+export const Container = styled(RectButton)`
   align-items: center;
   border: 1px solid ${fadedGrey};
   border-radius: 4px;

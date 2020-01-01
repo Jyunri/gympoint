@@ -4,7 +4,7 @@ import pt from 'date-fns/locale/pt';
 
 import { Container, Header, Left, Time, Question } from './styles';
 
-export default function Ticket({ data }) {
+export default function Ticket({ data, onPress }) {
   const dateParsed = useMemo(() => {
     return formatRelative(parseISO(data.createdAt), new Date(), {
       locale: pt,
@@ -13,7 +13,7 @@ export default function Ticket({ data }) {
   }, [data]);
 
   return (
-    <Container>
+    <Container onPress={() => onPress(data)}>
       {/* cant use id here since there are other students */}
       <Header>
         <Left answered={data.answer_at}>
