@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { View } from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -9,7 +9,7 @@ import Button from '~/components/Button';
 import Ticket from '~/components/Ticket';
 import api from '~/services/api';
 
-export default function Tickets({ navigation }) {
+function Tickets({ navigation, isFocused }) {
   const user = useSelector(state => state.user.profile.user);
   const [tickets, setTickets] = useState([]);
 
@@ -19,9 +19,11 @@ export default function Tickets({ navigation }) {
   }
 
   useEffect(() => {
-    loadTickets();
+    if (isFocused) {
+      loadTickets();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.id]);
+  }, [user.id, isFocused]);
 
   function handleCreateTicket() {
     navigation.navigate('NewTicket');
@@ -51,3 +53,5 @@ Tickets.navigationOptions = {
     <Icon name="help" size={20} color={tintColor} />
   ),
 };
+
+export default withNavigationFocus(Tickets);
