@@ -8,5 +8,6 @@ export const Container = styled.SafeAreaView`
 export const List = styled.FlatList.attrs({
   showVerticalScrollIndicator: false,
 })`
+  max-height: 80%; /** required to infinite scrolling */
   margin: 20px 0px;
 `;
