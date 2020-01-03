@@ -94,7 +94,7 @@ Queria colocar tudo em um docker compose, mas não sabia como lidar com o RN e a
   Deixei um TODO list dentro do readme do projeto, com algumas dúvidas pendentes
 
 </details>
----
+
 
 # Mobile
 
