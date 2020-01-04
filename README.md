@@ -77,6 +77,8 @@ Queria colocar tudo em um docker compose, mas não sabia como lidar com o RN e a
   ### Email
   Para testar o envio de emails, será necessário configurar o arquivo `src/config/mail.js` com as credenciais SMTP do inbox da sua conta do mailtrap
 
+  ### Obs
+  1. Adicionei paginação, apenas 3 registros serão mostrados por pagina em cada listagem. É necessário enviar a página(page) nas query param das requests
 
 </details>
 
