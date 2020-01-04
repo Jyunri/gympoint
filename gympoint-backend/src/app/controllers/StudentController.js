@@ -94,7 +94,7 @@ class StudentController {
 
   async delete(req, res) {
     await Student.destroy({ where: { id: req.params.id } });
-    await Enrollment.destroy({ where: { stundent_id: req.params.id } });
+    await Enrollment.destroy({ where: { student_id: req.params.id } });
 
     return res.json({ message: 'ok' });
   }
