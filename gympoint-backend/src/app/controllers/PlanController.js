@@ -10,11 +10,12 @@ class PlanController {
       return res.json(plan);
     }
 
-    const { page = 1 } = req.query;
-    const plans = await Plan.findAll({
-      limit: LIMIT,
-      offset: (page - 1) * LIMIT,
-    });
+    const { page = 1, paginate = 'true' } = req.query;
+    const paginateScope = paginate === 'true'
+      ? { limit: LIMIT, offset: (page - 1) * LIMIT, }
+      : {}
+
+    const plans = await Plan.findAll(paginateScope);
 
     return res.json(plans);
   }

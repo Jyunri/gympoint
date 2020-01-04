@@ -100,7 +100,8 @@ Queria colocar tudo em um docker compose, mas não sabia como lidar com o RN e a
   ```
 
   ### Obs
-  Deixei um TODO list dentro do readme do projeto, com algumas dúvidas pendentes
+  1. Adicionei paginação, apenas 3 registros serão mostrados por pagina em cada listagem
+  2. Deixei um TODO list dentro do readme do projeto, com algumas dúvidas pendentes
 
 </details>
 

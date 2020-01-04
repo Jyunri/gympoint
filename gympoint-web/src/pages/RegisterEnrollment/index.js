@@ -33,7 +33,7 @@ export default function RegisterEnrollment() {
   }
 
   async function filterStudents(inputValue) {
-    const response = await api.get('students');
+    const response = await api.get('students?paginate=false');
 
     const filteredStudents = response.data.filter(s =>
       s.name.toLowerCase().includes(inputValue.toLowerCase())
@@ -54,7 +54,7 @@ export default function RegisterEnrollment() {
   }
 
   async function filterPlans(inputValue) {
-    const response = await api.get('plans');
+    const response = await api.get('plans?paginate=false');
 
     const filteredPlans = response.data.filter(p =>
       p.title.toLowerCase().includes(inputValue.toLowerCase())

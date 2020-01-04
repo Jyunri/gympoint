@@ -72,7 +72,7 @@ export default function EditEnrollment() {
   }
 
   async function filterPlans(inputValue) {
-    const response = await api.get('plans');
+    const response = await api.get('plans?paginate=false');
 
     const filteredPlans = response.data.filter(p =>
       p.title.toLowerCase().includes(inputValue.toLowerCase())

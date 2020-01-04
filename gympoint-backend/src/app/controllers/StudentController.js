@@ -13,9 +13,13 @@ class StudentController {
       return res.json(student);
     }
 
-    const { page = 1 } = req.query;
     const filter = req.query.q;
     let students;
+
+    const { page = 1, paginate = 'true' } = req.query;
+    const paginateScope = paginate === 'true'
+      ? { limit: LIMIT, offset: (page - 1) * LIMIT, }
+      : {}
 
     if (filter) {
       students = await Student.findAll({
@@ -24,13 +28,11 @@ class StudentController {
             [Op.iLike]: `%${filter}%`,
           },
         },
-        limit: LIMIT,
-        offset: (page - 1) * LIMIT,
+        ...paginateScope
       });
     } else {
       students = await Student.findAll({
-        limit: LIMIT,
-        offset: (page - 1) * LIMIT,
+        ...paginateScope
       });
     }
 
