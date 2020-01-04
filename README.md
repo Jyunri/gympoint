@@ -69,6 +69,15 @@ Queria colocar tudo em um docker compose, mas não sabia como lidar com o RN e a
   ### Api
   Uma collection do `Postman` pode ser importada a partir desse link https://www.getpostman.com/collections/9cbe7749b2497f14ddce (não usei `Insomnia` pois eu precisava sincronizar em duas máquinas :alien:)
 
+  Adicionei um pack com as variáveis de ambiente utilizados nas requisições em `GYMPOINT.postman_environment.json`, basta importar no próprio Postman.
+
+  Não esquecer de setar o token a cada nova sessão.
+
+
+  ### Email
+  Para testar o envio de emails, será necessário configurar o arquivo `src/config/mail.js` com as credenciais SMTP do inbox da sua conta do mailtrap
+
+
 </details>
 
 

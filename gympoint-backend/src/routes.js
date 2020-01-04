@@ -18,11 +18,11 @@ routes.post('/students/:id/checkins', CheckinController.store);
 
 routes.get('/students/:id/help-orders', HelpOrderController.index);
 routes.post('/students/:id/help-orders', HelpOrderController.store);
-routes.get('/help-orders', AnswerOrderController.index);
-routes.post('/help-orders/:id/answer', AnswerOrderController.store);
 
 routes.get('/students', StudentController.index);
 routes.get('/students/:id', StudentController.index);
+
+// STUDENTS SHALL NOT PASS
 routes.use(authMiddleware);
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
@@ -39,5 +39,8 @@ routes.get('/enrollments/:id', EnrollmentController.index);
 routes.post('/enrollments', EnrollmentController.store);
 routes.put('/enrollments/:id', EnrollmentController.update);
 routes.delete('/enrollments/:id', EnrollmentController.delete);
+
+routes.get('/help-orders', AnswerOrderController.index);
+routes.post('/help-orders/:id/answer', AnswerOrderController.store);
 
 export default routes;

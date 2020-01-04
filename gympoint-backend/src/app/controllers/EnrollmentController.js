@@ -81,24 +81,28 @@ class EnrollmentController {
 
     const total_price = price * duration;
 
-    const enrollment = await Enrollment.create({
-      start_date: convertedStartDate,
-      end_date,
-      price: total_price,
-      student_id,
-      plan_id,
-    });
+    try {
+      const enrollment = await Enrollment.create({
+        start_date: convertedStartDate,
+        end_date,
+        price: total_price,
+        student_id,
+        plan_id,
+      });
 
-    const student = await Student.findByPk(student_id);
+      const student = await Student.findByPk(student_id);
 
-    await Queue.add(EnrollmentMail.key, {
-      student,
-      start_date,
-      end_date,
-      price,
-    });
+      await Queue.add(EnrollmentMail.key, {
+        student,
+        start_date,
+        end_date,
+        price,
+      });
 
-    return res.json(enrollment);
+      return res.json(enrollment);
+    } catch (error) {
+      return res.status(400).json({ error });
+    }
   }
 
   async update(req, res) {
@@ -118,6 +122,10 @@ class EnrollmentController {
     const convertedStartDate = zonedTimeToUtc(zonedDate, 'America/Sao_Paulo');
 
     const enrollment = await Enrollment.findByPk(req.params.id);
+
+    if(!enrollment) {
+      return res.status(400).json('Enrollment not exists');
+    }
 
     if (student_id !== enrollment.student_id) {
       const enrollmentExistsForStudent = await Enrollment.findOne({
@@ -141,17 +149,21 @@ class EnrollmentController {
       needsRecalculate = true;
     }
 
-    const result = await enrollment.update({
-      start_date: convertedStartDate,
-      end_date: needsRecalculate
-        ? addMonths(convertedStartDate, duration)
-        : end_date,
-      price: price * duration,
-      student_id,
-      plan_id,
-    });
+    try {
+      const result = await enrollment.update({
+        start_date: convertedStartDate,
+        end_date: needsRecalculate
+          ? addMonths(convertedStartDate, duration)
+          : end_date,
+        price: price * duration,
+        student_id,
+        plan_id,
+      });
 
-    return res.json(result);
+      return res.json(result);
+    } catch (error) {
+      return res.status(400).json({ error });
+    }
   }
 
   async delete(req, res) {
