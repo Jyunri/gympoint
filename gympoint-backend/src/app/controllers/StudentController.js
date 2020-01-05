@@ -9,8 +9,12 @@ class StudentController {
   async index(req, res) {
     // if route param is provided
     if (req.params.id) {
-      const student = await Student.findByPk(req.params.id);
-      return res.json(student);
+      try {
+        const student = await Student.findByPk(req.params.id);
+        return res.json(student);
+      } catch (error) {
+        return res.status(400).json({ error });
+      }
     }
 
     const filter = req.query.q;

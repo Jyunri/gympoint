@@ -18,6 +18,9 @@ export default function user(state = INITIAL_STATE, action) {
         draft.signed = true;
         draft.loading = false;
         break;
+      case '@user/SIGN_FAILURE':
+        draft.loading = false;
+        break;
       case '@user/SIGN_OUT':
         draft.profile = {};
         draft.signed = false;

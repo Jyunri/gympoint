@@ -7,6 +7,7 @@ Esse repositório contém os projetos back-end, front-end e mobile (iOS) da apli
 - yarn
 - docker
 - react-native-cli
+- cocoapods
 
 ### Disclaimer
 
@@ -119,10 +120,26 @@ A aplicação mobile foi testada apenas no `iOS`, apesar de ter implementação 
   ## Setup
   Abrir diretório `gympoint_mobile` e seguir as instruções abaixo
 
+  ### Node modules
+
+  ```
+  yarn install
+  ```
+
+  ## Links
+  Precisamos realizar o link das libs para compilar no iOS utilizando o cocoapods.
+
+  ```
+  cd ios && pod install && cd ..
+  ```
+
   ### Rodando a aplicação
 
   ```
   react-native run-ios
   ```
+
+  ### Obs
+  1. Adicionei o scroll infinito e um botão de logout no header
 
 </details>
